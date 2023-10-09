@@ -14,7 +14,8 @@ class categoryController extends Controller
      */
     public function index()
     {
-        //
+        $categorys=Category::latest()->get();
+        return view('dashboard.category.show_category', compact('categorys'));
     }
 
     /**
@@ -42,8 +43,7 @@ class categoryController extends Controller
      */
     public function show()
     {
-        $categorys=Category::latest()->get();
-        return view('dashboard.category.show_category', compact('categorys'));
+       
     }
 
     /**
@@ -59,11 +59,11 @@ class categoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {   
-        // $request->update([
-        //     'name'=>$request->name,
-        //     'slug'=>$request->slug,
-        // ]);
-        // return redirect('show', compact('category'));
+        $category->update([
+            'name'=>$request->name,
+            'slug'=>$request->slug,
+        ]);
+        return redirect('/categories');
     }
 
     /**
@@ -72,6 +72,6 @@ class categoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return back();
+        return redirect('/categories');
     }
 }

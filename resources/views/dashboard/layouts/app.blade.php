@@ -126,7 +126,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{route('show_category')}}">
+                  <a href="{{route('categories.index')}}">
                     <div class="parent-icon"><span class="material-symbols-outlined">category</span>
                     </div>
                     <div class="menu-title">Categorys</div>
@@ -134,7 +134,7 @@
                 </li>
                 
                 <li>
-                  <a href="{{route('show_products')}}">
+                  <a href="{{route('products.index')}}">
                     <div class="parent-icon"><span class="material-symbols-outlined">P</span>
                     </div>
                     <div class="menu-title">Products</div>

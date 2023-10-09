@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- Repeater Content -->
-                <form action="{{route('store')}}" method="post">
+                <form action="{{ route('categories.store') }}" method="post">
                     @csrf
                     
                     <div class="item-content">

@@ -4,8 +4,9 @@
     <div class="card">
         <div class="card-body p-4">
             <h5 class="mb-4">Product Edit Form</h5>
-            <form action="{{route('update_product', $product)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('products.update', $product)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 {{-- @dd($product->all()); --}}
                 <div class="row mb-3">
                     <label for="input35" class="col-sm-3 col-form-label">Product Name</label>
@@ -26,6 +27,14 @@
                             name="sale_price" value="{{$product->sale_price}}">
                     </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label for="input37" class="col-sm-3 col-form-label">Quantity</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="input37" placeholder="Quantity" name="quantity" value="{{$product->quantity}}">
+                    </div>
+                </div>
+                
                 <div class="row mb-3">
                     <label for="input39" class="col-sm-3 col-form-label">Product Category</label>
                     <div class="col-sm-9">
@@ -41,7 +50,7 @@
                 <div class="row mb-3">
                     <label for="input23" class="col-sm-3 col-form-label">Description</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" id="input23" placeholder="Description ..." rows="3" name="description" value="{{$product->description}}"></textarea>
+                        <textarea class="form-control" id="input23" placeholder="Description ..." rows="3" name="description" value="">{{$product->description}}</textarea>
                     </div>
                 </div>
                 

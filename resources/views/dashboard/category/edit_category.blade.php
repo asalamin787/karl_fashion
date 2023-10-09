@@ -6,9 +6,9 @@
         <div class="card">
             <div class="card-body">
                 <!-- Repeater Content -->
-                <form action="{{route('update_category', $category)}}" method="post">
+                <form action="{{route('categories.update', $category)}}" method="post">
                     @csrf
-                    
+                    @method('PUT')
                     <div class="item-content">
                         <div class="mb-3">
                             <label for="inputName1" class="form-label">Name</label>
@@ -24,7 +24,7 @@
                     <!-- Repeater Remove Btn -->
                     <div class="repeater-remove-btn">
                         <input type="submit" class="btn btn-success">
-                        <a href="{{route('show_category')}}" class="btn btn-danger">Cancle</a>
+                        <a href="{{route('categories.index')}}" class="btn btn-danger">Cancle</a>
                     </div>
                 </form>
             </div>

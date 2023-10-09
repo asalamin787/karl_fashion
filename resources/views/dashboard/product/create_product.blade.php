@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body p-4">
             <h5 class="mb-4">Product Create Form</h5>
-            <form action="{{ route('product_store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 @if (count($errors) > 0)
@@ -34,6 +34,14 @@
                             name="sale_price">
                     </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label for="input37" class="col-sm-3 col-form-label">Quantity</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="input37" placeholder="Quantity" name="quantity">
+                    </div>
+                </div>
+                
                 <div class="row mb-3">
                     <label for="input39" class="col-sm-3 col-form-label">Product Category</label>
                     <div class="col-sm-9">

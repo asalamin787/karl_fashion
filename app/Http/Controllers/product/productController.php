@@ -15,7 +15,8 @@ class productController extends Controller
      */
     public function index()
     {
-        //
+        $products=Product::latest()->get();
+        return view('dashboard.product.show_products', compact('products'));
     }
 
     /**
@@ -38,18 +39,18 @@ class productController extends Controller
             'sale_price'=>$request->sale_price,
             'category_id'=>$request->category_id,
             'image' =>$request->file('image')->store('public/product'),
+            'quantity'=>$request->quantity,
             'description'=>$request->description,
         ]);
-        return back();
+        return redirect('/products');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show_products()
+    public function show()
     {
-        $products=Product::latest()->get();
-        return view('dashboard.product.show_products', compact('products'));
+        
     }
 
     /**
@@ -78,9 +79,10 @@ class productController extends Controller
             'sale_price'=>$request->sale_price,
             'category_id'=>$request->category_id,
             'image'=>$image,
+            'quantity'=>$request->quantity,
             'description'=>$request->description,
         ]);
-        return redirect('show_products',compact('product'));
+        return redirect('/products');
     }
 
     /**
@@ -88,8 +90,9 @@ class productController extends Controller
      */
     public function destroy(Product $product)
     {
+        // dd($product);
         Storage::delete($product->image);
         $product->delete();
-        return back();
+        return redirect('/products');
     }
 }
