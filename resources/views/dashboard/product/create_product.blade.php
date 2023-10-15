@@ -21,12 +21,14 @@
                         <input type="text" class="form-control" id="input35" placeholder="Product Name" name="name">
                     </div>
                 </div>
+                
                 <div class="row mb-3">
                     <label for="input36" class="col-sm-3 col-form-label">Price</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="input36" placeholder="Phone No" name="price">
                     </div>
                 </div>
+               
                 <div class="row mb-3">
                     <label for="input37" class="col-sm-3 col-form-label">Sale Price</label>
                     <div class="col-sm-9">
@@ -77,6 +79,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
                     <label class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-9">

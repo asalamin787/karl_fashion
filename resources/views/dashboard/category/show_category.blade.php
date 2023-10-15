@@ -4,6 +4,7 @@
         <div class="card-body">
             <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">+ Add new</a>
             <div class="customer-table">
+                
                 <div class="table-responsive white-space-nowrap">
                     <table class="table align-middle">
                         <thead class="table-light">

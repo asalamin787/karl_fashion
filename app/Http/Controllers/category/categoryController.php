@@ -31,11 +31,17 @@ class categoryController extends Controller
      */
     public function store(Request $request)
     {   
-        Category::create([
-            'name'=>$request->name,
-            'slug'=>$request->slug,
+        $request->validate([
+            'name' => 'required|unique:categories',
         ]);
-        return back();
+        
+        // $slug = Str::slug($request->name); 
+
+        Category::create([
+            'name' => $request->name,
+            // 'slug' => $slug, 
+        ]);
+        return redirect('/categories')->with('message', 'Register Success');
     }
 
     /**
