@@ -32,7 +32,7 @@ class categoryController extends Controller
             'name' => $request->name,
             // 'slug' => $slug, 
         ]);
-        return redirect('/categories')->with('message', 'Register Success');
+        return back()->with('message', 'Category Added SuccessFull');
     }
 
     public function show()
@@ -51,12 +51,12 @@ class categoryController extends Controller
             'name'=>$request->name,
             'slug'=>$request->slug,
         ]);
-        return redirect('/categories');
+        return redirect('/categories')->with('message', 'Category Update SuccessFull');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/categories');
+        return redirect('/categories')->with('message', 'Category Delete SuccessFull');
     }
 }

@@ -33,6 +33,16 @@ class productController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'sale_price' => 'required',
+            'category_id' => 'required',
+            'image' => 'required',
+            'quantity' => 'required',
+            'description' => 'required',
+        ]);
+
         Product::create([
             'name'=>$request->name,
             'price'=>$request->price,
@@ -42,7 +52,7 @@ class productController extends Controller
             'quantity'=>$request->quantity,
             'description'=>$request->description,
         ]);
-        return redirect('/products');
+        return back()->with('message', 'Product added successFull !');
     }
 
     /**
@@ -82,7 +92,7 @@ class productController extends Controller
             'quantity'=>$request->quantity,
             'description'=>$request->description,
         ]);
-        return redirect('/products');
+        return redirect('/products')->with('message', 'Product Update successFull !');
     }
 
     /**
@@ -93,6 +103,6 @@ class productController extends Controller
         // dd($product);
         Storage::delete($product->image);
         $product->delete();
-        return redirect('/products');
+        return redirect('/products')->with('message', 'Product Delete successFull !');
     }
 }

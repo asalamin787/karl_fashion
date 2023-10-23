@@ -4,11 +4,11 @@
     <div class="items" data-group="test">
         <div class="card">
             <div class="card-body">
-                <h3 class="fw-bold text-uppercase"> Add Catigory</h3>
+                <h3 class="fw-bold text-uppercase"> Add Category</h3>
                 <!-- Repeater Content -->
                 <form action="{{ route('categories.store') }}" method="post">
                     @csrf
-                   
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -18,7 +18,13 @@
                             </ul>
                         </div>
                     @endif
-                   
+
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+
                     <div class="item-content">
                         <div class="mb-3">
                             <label for="inputName1" class="form-label">Name</label>
