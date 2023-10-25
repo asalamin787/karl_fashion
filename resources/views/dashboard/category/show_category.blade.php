@@ -58,6 +58,7 @@
                     </table>
                 </div>
             </div>
+            <div>{{ $categorys->onEachSide(4)->links() }}
         </div>
     </div>
 @endsection

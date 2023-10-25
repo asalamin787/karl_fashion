@@ -71,10 +71,13 @@
                                     </td>
                                 </tr>
                             @endforeach
+                           
+                            </div>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div>{{ $products->onEachSide(4)->links() }}
         </div>
     </div>
 @endsection

@@ -1,7 +1,10 @@
 @extends('dashboard.view.layouts.main')
+
 @section('cover_photo')
-    <header style="background-image: url(view/img/bg-img/bg-1.jpg);" @endsection @section('main') <!****** Quick View Modal
-        Area Start ****** -->
+    <header style="background-image: url(view/img/bg-img/bg-1.jpg);">
+    @endsection
+
+    @section('main')
         <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -29,7 +32,8 @@
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </div>
                                             <h5 class="price">$120.99 <span>$130</span></h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
+                                                expedita
                                                 quibusdam aspernatur, sapiente consectetur accusantium perspiciatis
                                                 praesentium
                                                 eligendi, in fugiat?</p>
@@ -202,18 +206,18 @@
                                 <h6 class="widget-title mb-30">Recommended</h6>
 
                                 <div class="widget-desc">
-                                    @dd($sidebars->all())
-                                    @foreach ($sidebars as $sidebar)
-                                        <div class="single-recommended-product d-flex mb-30">
-                                            <div class="single-recommended-thumb mr-3">
-                                                <img src="{{Storage::url($sidebar->image)}}" alt="">
-                                            </div>
-                                            <div class="single-recommended-desc">
-                                                <h6>Men’s T-shirt</h6>
-                                                <p>$ {{$sidebar->price}}</p>
-                                            </div>
+
+
+                                    <div class="single-recommended-product d-flex mb-30">
+                                        <div class="single-recommended-thumb mr-3">
+                                            <img src="" alt="">
                                         </div>
-                                    @endforeach
+                                        <div class="single-recommended-desc">
+                                            <h6>Men’s T-shirt</h6>
+                                            <p>$ </p>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -238,7 +242,14 @@
                                             <h4 class="product-price">${{ $product->price }}</h4>
                                             <p>{{ $product->description }}</p>
                                             <!-- Add to Cart -->
-                                            <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                            <form action="{{ route('cart.store') }}" method="post">
+
+                                                @csrf
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                <button type="submit" class="add-to-cart-btn border-0">ADD TO CART</a>
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 @endforeach
@@ -249,9 +260,7 @@
                         <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-sm">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    {{ $products->onEachSide(5)->links() }}
                                 </ul>
                             </nav>
                         </div>

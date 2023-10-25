@@ -101,8 +101,8 @@
                             @foreach ($products as $product)
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
-                                        <div class="quickview_pro_img">
-                                            <img src="{{ Storage::url($product->image) }}" alt="">
+                                        <div class="quickview_pro_img" style="height: 340px">
+                                            <img style="height: 340px" src="{{ Storage::url($product->image) }}" alt="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-7">
@@ -116,7 +116,8 @@
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </div>
                                             <h5 class="price">${{ $product->sale_price }}
-                                                <span>${{ $product->price }}</span></h5>
+                                                <span>${{ $product->price }}</span>
+                                            </h5>
                                             <p>{{ $product->description }}</p>
                                             <a href="#">View Full Product Details</a>
                                         </div>
@@ -162,6 +163,7 @@
                             @endforeach
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -196,19 +198,25 @@
                 @foreach ($products as $product)
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Product Image -->
-                        <div class="product-img">
-                            <img src="{{ Storage::url($product->image) }}" alt="">
-                            <div class="product-quicview">
+                        <div class="product-img" style="height: 420px">
+                            <img style="height: 420px" src="{{ Storage::url($product->image) }}" alt="">
+                            <div class="product-quicview" style="height: 420px">
                                 <a href="#" data-toggle="modal" data-target="#quickview"><i
                                         class="ti-plus"></i></a>
                             </div>
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <h4 class="product-price">${{ $product->price }}</h4>
+                            <h4 class="product-price">${{ $product->sale_price }}</h4>
                             <p>{{ $product->description }}</p>
                             <!-- Add to Cart -->
-                            <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                            <form action="{{ route('cart.store') }}" method="post">
+
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" class="add-to-cart-btn border-0">ADD TO CART</a>
+                            </form>
                         </div>
                     </div>
                 @endforeach

@@ -8,13 +8,20 @@ use Illuminate\Http\Request;
 class pageController extends Controller
 {
     public function index(){
-        $products=Product::latest()->get();
+        $products=Product::latest()->paginate(6);
         return view('dashboard.view.index', compact('products'));
     }
 
     public function shop(){
-        $products=Product::latest()->get();
-        $sidebars=Product::latest()->get();
-        return view('dashboard.view.shop', compact('products , sidebars'));
+        $products=Product::latest()->paginate(9);
+        return view('dashboard.view.shop', compact('products'));
+    }
+
+    public function cart(){
+        return view('dashboard.view.cart');
+    }
+
+    public function checkout(){
+        return view('dashboard.view.checkout');
     }
 }

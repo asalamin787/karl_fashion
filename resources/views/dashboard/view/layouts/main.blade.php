@@ -113,7 +113,7 @@
                                     <!-- Cart Area -->
                                     <div class="cart">
                                         <a href="#" id="header-cart-btn" target="_blank"><span
-                                                class="cart_quantity">2</span> <i class="ti-bag"></i> Your Bag $20</a>
+                                                class="cart_quantity">{{Cart::getTotalQuantity()}}</span> <i class="ti-bag"></i> Your Bag ${{Cart::getSubTotal()}}</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
@@ -122,26 +122,16 @@
                                                         alt=""></a>
                                                 <div class="cart-item-desc">
                                                     <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">$10</span></p>
+                                                    <p>1x - <span class="price">$</span></p>
                                                 </div>
                                                 <span class="dropdown-product-remove"><i
                                                         class="icon-cross"></i></span>
                                             </li>
-                                            <li>
-                                                <a href="#" class="image"><img
-                                                        src="img/product-img/product-11.jpg" class="cart-thumb"
-                                                        alt=""></a>
-                                                <div class="cart-item-desc">
-                                                    <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">$10</span></p>
-                                                </div>
-                                                <span class="dropdown-product-remove"><i
-                                                        class="icon-cross"></i></span>
-                                            </li>
+
                                             <li class="total">
-                                                <span class="pull-right">Total: $20.00</span>
-                                                <a href="cart.html" class="btn btn-sm btn-cart">Cart</a>
-                                                <a href="checkout-1.html" class="btn btn-sm btn-checkout">Checkout</a>
+                                                <span class="pull-right">Total: ${{Cart::getSubTotal()}}</span>
+                                                <a href="{{route('cart')}}" class="btn btn-sm btn-cart">Cart</a>
+                                                <a href="{{route('checkout')}}" class="btn btn-sm btn-checkout">Checkout</a>
                                             </li>
                                         </ul>
                                     </div>

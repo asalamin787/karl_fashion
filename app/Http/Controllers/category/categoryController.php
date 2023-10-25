@@ -11,7 +11,7 @@ class categoryController extends Controller
 {
     public function index()
     {
-        $categorys=Category::latest()->get();
+        $categorys=Category::latest()->paginate(10);
         return view('dashboard.category.show_category', compact('categorys'));
     }
 
