@@ -122,7 +122,7 @@
                                                         alt=""></a>
                                                 <div class="cart-item-desc">
                                                     <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">$</span></p>
+                                                    <p>1x - <span class="price">${{Cart::getContent() }}</p>
                                                 </div>
                                                 <span class="dropdown-product-remove"><i
                                                         class="icon-cross"></i></span>

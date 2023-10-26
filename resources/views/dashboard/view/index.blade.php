@@ -93,21 +93,21 @@
                 <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
+                {{-- <input type="hidden" name="bookId" id="bookId" value=""/> --}}
                 <div class="modal-body">
                     <div class="quickview_body">
                         <div class="container">
-                            {{-- @dd($products->count()) --}}
-                            @foreach ($products as $product)
+
                                 <div class="row">
                                     <div class="col-12 col-lg-5">
                                         <div class="quickview_pro_img" style="height: 340px">
-                                            <img style="height: 340px" src="{{ Storage::url($product->image) }}" alt="">
+                                            <img style="height: 340px" class="image" id="product-image" src=""
+                                                alt="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-7">
                                         <div class="quickview_pro_des">
-                                            <h4 class="title">Boutique Silk Dress</h4>
+                                            <h4 class="title" id="product-name"></h4>
                                             <div class="top_seller_product_rating mb-15">
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -115,10 +115,11 @@
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                                 <i class="fa fa-star" aria-hidden="true"></i>
                                             </div>
-                                            <h5 class="price">${{ $product->sale_price }}
+                                            {{-- <h5 class="price">${{ $product->sale_price }}
                                                 <span>${{ $product->price }}</span>
-                                            </h5>
-                                            <p>{{ $product->description }}</p>
+                                            </h5> --}}
+                                            <input type="hidden" name="product_id" id="product_id" value="">
+                                            <p ></p>
                                             <a href="#">View Full Product Details</a>
                                         </div>
                                         <!-- Add to Cart Form -->
@@ -130,6 +131,7 @@
 
                                                 <input type="number" class="qty-text" id="qty" step="1"
                                                     min="1" max="12" name="quantity" value="1">
+
 
                                                 <span class="qty-plus"
                                                     onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
@@ -160,7 +162,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+
                         </div>
                     </div>
 
@@ -201,8 +203,8 @@
                         <div class="product-img" style="height: 420px">
                             <img style="height: 420px" src="{{ Storage::url($product->image) }}" alt="">
                             <div class="product-quicview" style="height: 420px">
-                                <a href="#" data-toggle="modal" data-target="#quickview"><i
-                                        class="ti-plus"></i></a>
+                                <a href="" class="product-view" data-toggle="modal" data-id="{{$product->id}}" data-title="{{$product->name}}" data-image="{{Storage::url($product->image)}}"
+                                    data-target="#quickview"><i class="ti-plus"></i></a>
                             </div>
                         </div>
                         <!-- Product Description -->
@@ -319,5 +321,21 @@
 
         </div>
     </section>
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".product-view").click(function() {
+                // console.log($(this).data('id'))
+                // console.log($(this).data('image'))
+                
+                $('#product_id').val($(this).data('id'));
+                $('#product-name').text($(this).data('title'));
+                $('#product-image').attr('src', $(this).data('image'));
+                $('#quickview').modal('show');
+            });
+        });
+    </script>
     <!-- ****** Popular Brands Area End ****** -->
 @endsection
