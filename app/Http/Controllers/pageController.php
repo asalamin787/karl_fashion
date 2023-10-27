@@ -24,4 +24,9 @@ class pageController extends Controller
     public function checkout(){
         return view('dashboard.view.checkout');
     }
+
+    public function product_details(){
+        $products=Product::latest()->get();
+        return view('dashboard.view.product_details', compact('products'));
+    }
 }

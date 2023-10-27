@@ -17,6 +17,7 @@ Route::get('/index', [pageController::class, 'index'])->name('index');
 Route::get('/shop', [pageController::class, 'shop'])->name('shop');
 Route::get('/caet', [pageController::class, 'cart'])->name('cart');
 Route::get('/checkout', [pageController::class, 'checkout'])->name('checkout');
+Route::get('/product_details', [pageController::class,'product_details'])->name('product_details');
 
 Route::post('/add-cart',[CartController::class,'add'])->name('cart.store');
 Route::post('/add-update',[CartController::class,'update'])->name('cart.update');

@@ -116,17 +116,21 @@
                                                 class="cart_quantity">{{Cart::getTotalQuantity()}}</span> <i class="ti-bag"></i> Your Bag ${{Cart::getSubTotal()}}</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
+                                            @foreach (Cart::getContent() as $product)
+                                                
                                             <li>
                                                 <a href="#" class="image"><img
-                                                        src="img/product-img/product-10.jpg" class="cart-thumb"
+                                                        src="{{ Storage::url($product->model->image) }}" class="cart-thumb"
                                                         alt=""></a>
                                                 <div class="cart-item-desc">
-                                                    <h6><a href="#">Women's Fashion</a></h6>
-                                                    <p>1x - <span class="price">${{Cart::getContent() }}</p>
+                                                    <h6><a href="#">{{ $product->name }}</a></h6>
+                                                    <p>1x - <span class="price">${{ $product->model->sale_price }}
+                                                        ={{ $product->model->sale_price * $product->quantity }} </p>
                                                 </div>
                                                 <span class="dropdown-product-remove"><i
                                                         class="icon-cross"></i></span>
                                             </li>
+                                            @endforeach
 
                                             <li class="total">
                                                 <span class="pull-right">Total: ${{Cart::getSubTotal()}}</span>
@@ -180,14 +184,13 @@
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="{{route('index')}}">Home</a>
                                                     <a class="dropdown-item" href="{{route('shop')}}">Shop</a>
-                                                    <a class="dropdown-item" href="product-details.html">Product
-                                                        Details</a>
-                                                    <a class="dropdown-item" href="cart.html">Cart</a>
-                                                    <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                                    <a class="dropdown-item" href="{{route('product_details')}}">Product Details</a>
+                                                    <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
+                                                    <a class="dropdown-item" href="{{route('checkout')}}">Checkout</a>
                                                 </div>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#"><span
+                                            <li class="nav-item"><a class="nav-link" href="{{route('shop')}}"><span
                                                         class="karl-level">hot</span> Shoes</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                                         </ul>

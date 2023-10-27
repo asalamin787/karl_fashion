@@ -230,8 +230,8 @@
                                     <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig"
                                         data-wow-delay="0.2s">
                                         <!-- Product Image -->
-                                        <div class="product-img">
-                                            <img src="{{ Storage::url($product->image) }}" alt="">
+                                        <div class="product-img" style="height: 287px">
+                                            <img style="height: 287px" src="{{ Storage::url($product->image) }}" alt="">
                                             <div class="product-quicview">
                                                 <a href="#" data-toggle="modal" data-target="#quickview"><i
                                                         class="ti-plus"></i></a>
@@ -247,7 +247,7 @@
                                                 @csrf
                                                 <input type="hidden" name="quantity" value="1">
                                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                <button type="submit" class="add-to-cart-btn border-0">ADD TO CART</a>
+                                                <button type="submit" class="add-to-cart-btn border-0 bg-light">ADD TO CART</a>
                                             </form>
                                             
                                         </div>

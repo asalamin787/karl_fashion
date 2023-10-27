@@ -217,7 +217,7 @@
                                 @csrf
                                 <input type="hidden" name="quantity" value="1">
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button type="submit" class="add-to-cart-btn border-0">ADD TO CART</a>
+                                <button type="submit" class="add-to-cart-btn border-0 bg-light">ADD TO CART</a>
                             </form>
                         </div>
                     </div>

@@ -18,12 +18,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (Cart::getContent() as $product)
+                                    
                                 <tr>
                                     <td class="cart_product_img d-flex align-items-center">
-                                        <a href="#"><img src="img/product-img/product-9.jpg" alt="Product"></a>
-                                        <h6>Yellow Cocktail Dress</h6>
+                                        <a href="#"><img src="{{ Storage::url($product->model->image) }}" alt="Product"></a>
+                                        <h6>{{ $product->name }}</h6>
                                     </td>
-                                    <td class="price"><span>$49.88</span></td>
+                                    <td class="price"><span>${{ $product->model->sale_price }}</span></td>
                                     <td class="qty">
                                         <div class="quantity">
                                             <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
@@ -31,8 +33,9 @@
                                             <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </td>
-                                    <td class="total_price"><span>$49.88</span></td>
+                                    <td class="total_price"><span>${{ $product->model->sale_price }}</span></td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -94,9 +97,9 @@
                         </div>
 
                         <ul class="cart-total-chart">
-                            <li><span>Subtotal</span> <span>$59.90</span></li>
+                            <li><span>Total Itim</span> <span>{{Cart::getTotalQuantity()}}</span></li>
                             <li><span>Shipping</span> <span>Free</span></li>
-                            <li><span><strong>Total</strong></span> <span><strong>$59.90</strong></span></li>
+                            <li><span><strong>Total</strong></span> <span><strong>${{Cart::getSubTotal()}}</strong></span></li>
                         </ul>
                         <a href="checkout.html" class="btn karl-checkout-btn">Proceed to checkout</a>
                     </div>
