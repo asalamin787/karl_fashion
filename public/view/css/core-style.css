@@ -1833,10 +1833,10 @@ img {
 :: 18.0 Cart Page CSS
 ------------------- */
 
-.cart-table .table {
+/* .cart-table .table {
     position: relative;
     z-index: 9;
-}
+} */
 
 .cart_area table thead {
     background-color: #f4f2f8;
@@ -1856,7 +1856,7 @@ img {
     margin-right: 20px;
 }
 
-.cart-table .table td,
+/* .cart-table .table td,
 .cart-table .table th {
     padding: 12px;
     padding: 12px;
@@ -1865,7 +1865,7 @@ img {
     vertical-align: middle;
     border: none;
     font-size: 13px;
-}
+} */
 
 .cart-table .cart_product_img h6 {
     font-size: 14px;

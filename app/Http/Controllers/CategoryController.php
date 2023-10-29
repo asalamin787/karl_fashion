@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\category;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category\Category;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $categorys=Category::latest()->paginate(10);

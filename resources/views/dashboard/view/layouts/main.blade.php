@@ -12,14 +12,14 @@
     <title>Karl - Fashion Ecommerce Template | Home</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="{{asset('view/img/core-img/favicon.ico')}}">
+    <link rel="icon" href="{{ asset('view/img/core-img/favicon.ico') }}">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="{{asset('view/css/core-style.css')}}">
-    <link rel="stylesheet" href="{{asset('view/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('view/css/core-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('view/style.css') }}">
 
     <!-- Responsive CSS -->
-    <link href="{{asset('view/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{ asset('view/css/responsive.css') }}" rel="stylesheet">
 
 </head>
 
@@ -113,29 +113,32 @@
                                     <!-- Cart Area -->
                                     <div class="cart">
                                         <a href="#" id="header-cart-btn" target="_blank"><span
-                                                class="cart_quantity">{{Cart::getTotalQuantity()}}</span> <i class="ti-bag"></i> Your Bag ${{Cart::getSubTotal()}}</a>
+                                                class="cart_quantity">{{ Cart::getTotalQuantity() }}</span> <i
+                                                class="ti-bag"></i> Your Bag ${{ Cart::getSubTotal() }}</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
+                                            {{-- @dd($products) --}}
                                             @foreach (Cart::getContent() as $product)
-                                                
-                                            <li>
-                                                <a href="#" class="image"><img
-                                                        src="{{ Storage::url($product->model->image) }}" class="cart-thumb"
-                                                        alt=""></a>
-                                                <div class="cart-item-desc">
-                                                    <h6><a href="#">{{ $product->name }}</a></h6>
-                                                    <p>1x - <span class="price">${{ $product->model->sale_price }}
-                                                        ={{ $product->model->sale_price * $product->quantity }} </p>
-                                                </div>
-                                                <span class="dropdown-product-remove"><i
-                                                        class="icon-cross"></i></span>
-                                            </li>
+                                                <li>
+                                                    <a href="#" class="image"><img
+                                                            src="{{ Storage::url($product->model->image) }}"
+                                                            class="cart-thumb" alt=""></a>
+                                                    <div class="cart-item-desc">
+                                                        <h6><a href="#">{{ $product->name }}</a></h6>
+                                                        <p>1x - <span class="price">${{ $product->model->sale_price }}
+                                                                ={{ $product->model->sale_price * $product->quantity }}
+                                                        </p>
+                                                    </div>
+                                                    <span class="dropdown-product-remove"><i
+                                                            class="icon-cross"></i></span>
+                                                </li>
                                             @endforeach
 
                                             <li class="total">
-                                                <span class="pull-right">Total: ${{Cart::getSubTotal()}}</span>
-                                                <a href="{{route('cart')}}" class="btn btn-sm btn-cart">Cart</a>
-                                                <a href="{{route('checkout')}}" class="btn btn-sm btn-checkout">Checkout</a>
+                                                <span class="pull-right">Total: ${{ Cart::getSubTotal() }}</span>
+                                                <a href="{{ route('cart') }}" class="btn btn-sm btn-cart">Cart</a>
+                                                <a href="{{ route('checkout') }}"
+                                                    class="btn btn-sm btn-checkout">Checkout</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -176,22 +179,25 @@
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
                                             <li class="nav-item active"><a class="nav-link"
-                                                    href="{{route('index')}}">Home</a></li>
+                                                    href="{{ route('index') }}">Home</a></li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
                                                     role="button" data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">Pages</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                    <a class="dropdown-item" href="{{route('index')}}">Home</a>
-                                                    <a class="dropdown-item" href="{{route('shop')}}">Shop</a>
-                                                    <a class="dropdown-item" href="{{route('product_details')}}">Product Details</a>
-                                                    <a class="dropdown-item" href="{{route('cart')}}">Cart</a>
-                                                    <a class="dropdown-item" href="{{route('checkout')}}">Checkout</a>
+                                                    <a class="dropdown-item" href="{{ route('index') }}">Home</a>
+                                                    <a class="dropdown-item" href="{{ route('shop') }}">Shop</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('product_details') }}">Product Details</a>
+                                                    <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('checkout') }}">Checkout</a>
                                                 </div>
                                             </li>
                                             <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="{{route('shop')}}"><span
-                                                        class="karl-level">hot</span> Shoes</a></li>
+                                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{ route('shop') }}"><span class="karl-level">hot</span>
+                                                    Shoes</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                                         </ul>
                                     </div>
@@ -315,15 +321,15 @@
     <!-- /.wrapper end -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="{{asset('view/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{ asset('view/js/jquery/jquery-2.2.4.min.js') }}"></script>
     <!-- Popper js -->
-    <script src="{{asset('view/js/popper.min.js')}}"></script>
+    <script src="{{ asset('view/js/popper.min.js') }}"></script>
     <!-- Bootstrap js -->
-    <script src="{{asset('view/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('view/js/bootstrap.min.js') }}"></script>
     <!-- Plugins js -->
-    <script src="{{asset('view/js/plugins.js')}}"></script>
+    <script src="{{ asset('view/js/plugins.js') }}"></script>
     <!-- Active js -->
-    <script src="{{asset('view/js/active.js')}}"></script>
+    <script src="{{ asset('view/js/active.js') }}"></script>
 
 </body>
 
