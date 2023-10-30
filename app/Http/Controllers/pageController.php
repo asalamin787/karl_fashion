@@ -29,4 +29,8 @@ class PageController extends Controller
         $products=Product::latest()->get();
         return view('dashboard.view.product_details', compact('products'));
     }
+
+    public function thanks(){
+        return view('dashboard.view.thanks');
+    }
 }

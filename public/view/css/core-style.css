@@ -2046,8 +2046,8 @@ img {
     color: #ff084e;
 }
 
-.checkout_details_area form .form-control,
-.checkout_details_area form .custom-select {
+.checkout_details_area  .form-control,
+.checkout_details_area  .custom-select {
     height: 52px;
     border: none;
     background-color: #f4f2f8;
