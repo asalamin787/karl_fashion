@@ -21,6 +21,7 @@
 
     <!-- Responsive CSS -->
     <link href="{{ asset('view/css/responsive.css') }}" rel="stylesheet">
+    @yield('link')
 
 </head>
 
@@ -267,6 +268,7 @@
                                                 to Terms &amp; Conditions</label>
                                         </div>
                                     </div> --}}
+                                    <input type="hidden" name="role_id" value="2">
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button type="submit" class="btn btn-primary border-3">Register</button>
@@ -332,8 +334,14 @@
                                                 <span class="pull-right">Total:
                                                     ${{ Cart::getSubTotal() }}</span>
                                                 <a href="{{ route('cart') }}" class="btn btn-sm btn-cart">Cart</a>
-                                                <a href="{{ route('checkout') }}"
-                                                    class="btn btn-sm btn-checkout">Checkout</a>
+                                                @if (auth()->check())
+                                                    <a href="{{ route('checkout') }}"
+                                                        class="btn btn-sm btn-checkout">Checkout</a>
+                                                @else
+                                                    <a href="" class="btn btn-sm btn-checkout"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">Checkout</a>
+                                                @endif
                                             </li>
                                         </ul>
                                     </div>
@@ -403,28 +411,43 @@
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                @if (auth()->check())
+                                                    
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
                                                     role="button" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">Login</a>
+                                                    aria-expanded="false">Profile</a>
+                                                @else
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">Login</a>
+                                                @endif
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
 
-                                                    <a class="dropdown-item" href="">Profile</a>
+                                                    @if (auth()->check())
+                                                        <a class="dropdown-item" href="{{route('profile')}}">View Profile</a>
 
-                                                    <button type="button" class=" dropdown-item"
-                                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                        Login
-                                                    </button>
+                                                        <form action="{{ route('logout') }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">
+                                                                Logout</button>
+
+                                                        </form>
+                                                    @else
+                                                        <button type="button" class=" dropdown-item"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            Login
+                                                        </button>
 
 
-                                                    <button class="dropdown-item" data-bs-target="#exampleModalToggle"
-                                                        data-bs-toggle="modal">Sine in here
-                                                    </button>
-                                                    <form action="{{ route('logout') }}" method="post">
-                                                        @csrf
-                                                        <button type="submit" class="dropdown-item">
-                                                           Logout</button>
+                                                        <button class="dropdown-item"
+                                                            data-bs-target="#exampleModalToggle"
+                                                            data-bs-toggle="modal">Sine in here
+                                                        </button>
+                                                    @endif
 
-                                                    </form>
+
+
+
                                                     {{-- <a class="dropdown-item" href="">Logout</a> --}}
                                                 </div>
                                             </li>

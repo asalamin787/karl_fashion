@@ -33,4 +33,8 @@ class PageController extends Controller
     public function thanks(){
         return view('dashboard.view.thanks');
     }
+
+    public function profile(){
+        return view('dashboard.view.profile');
+    }
 }
