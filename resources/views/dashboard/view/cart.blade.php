@@ -124,11 +124,11 @@
                 </div>
             </div>
         </div>
-        {{-- <script>
+        <script>
             $(document).ready(function(){
                 $("#checkout").click(function(){
                     alert("Pless Login ");
                 });
             });
-            </script> --}}
+            </script>
     @endsection

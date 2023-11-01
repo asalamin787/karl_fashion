@@ -136,7 +136,7 @@
                                             </h5> --}}
                                         <input type="hidden" name="product_id" id="product_id" value="">
                                         <p></p>
-                                        <a href="#">View Full Product Details</a>
+                                        <a href="">View Full Product Details</a>
                                     </div>
                                     <!-- Add to Cart Form -->
                                     <form class="cart" method="post">
@@ -224,8 +224,10 @@
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <h4 class="product-price">${{ $product->sale_price }}</h4>
-                            <p>{{ $product->description }}</p>
+                            <a href="{{route('product_details',$product)}}">
+                                <h4 class="product-price">${{ $product->sale_price }}</h4>
+                                <p>{{ $product->description }}</p>
+                            </a>
                             <!-- Add to Cart -->
                             <form action="{{ route('cart.store') }}" method="post">
 

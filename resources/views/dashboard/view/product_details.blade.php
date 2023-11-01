@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-12">
                     <ol class="breadcrumb d-flex align-items-center">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Dresses</a></li>
-                        <li class="breadcrumb-item active">Long Dress</li>
+                        <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('shop')}}">Shop</a></li>
+                        <li class="breadcrumb-item active">Product Details</li>
                     </ol>
                     <!-- btn -->
-                    <a href="#" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Back to
-                        Category</a>
+                    <a href="{{route('shop')}}" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Back to
+                        Shop</a>
                 </div>
             </div>
         </div>
@@ -30,53 +30,54 @@
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
 
-                            <ol class="carousel-indicators">
-                                <li class="active" data-target="#product_details_slider" data-slide-to="0"
-                                    style="background-image: url(img/product-img/product-9.jpg);">
+                            {{-- <ol class="carousel-indicators">
+                                <li class="active" data-target="#product_details_slider" data-slide-to="0">
+                                    <img src="{{ Storage::url($product->image) }}" alt="">
                                 </li>
-                                <li data-target="#product_details_slider" data-slide-to="1"
-                                    style="background-image: url(img/product-img/product-2.jpg);">
+                                <li data-target="#product_details_slider" data-slide-to="1">
+                                    <img src="{{ Storage::url($product->image) }}" alt="">
                                 </li>
-                                <li data-target="#product_details_slider" data-slide-to="2"
-                                    style="background-image: url(img/product-img/product-3.jpg);">
+                                <li data-target="#product_details_slider" data-slide-to="2">
+                                    <img src="{{ Storage::url($product->image) }}" alt="">
                                 </li>
-                                <li data-target="#product_details_slider" data-slide-to="3"
-                                    style="background-image: url(img/product-img/product-4.jpg);">
+                                <li data-target="#product_details_slider" data-slide-to="3">
+                                    <img src="{{ Storage::url($product->image) }}" alt="">
                                 </li>
-                            </ol>
+                            </ol> --}}
                             
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <a class="gallery_img" href="img/product-img/product-9.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-9.jpg" alt="First slide">
+                                    <a class="gallery_img" href="">
+                                        <img class="d-block w-100" src="{{ Storage::url($product->image) }}" alt="First slide">
+                                    </a>
+                                </div>
+                                {{-- <div class="carousel-item">
+                                    <a class="gallery_img" href="">
+                                        <img class="d-block w-100" src="{{ Storage::url($product->image) }}" alt="Second slide">
                                     </a>
                                 </div>
                                 <div class="carousel-item">
-                                    <a class="gallery_img" href="img/product-img/product-2.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-2.jpg" alt="Second slide">
+                                    <a class="gallery_img" href="">
+                                        <img class="d-block w-100" src="{{ Storage::url($product->image) }}" alt="Third slide">
                                     </a>
                                 </div>
                                 <div class="carousel-item">
-                                    <a class="gallery_img" href="img/product-img/product-3.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-3.jpg" alt="Third slide">
+                                    <a class="gallery_img" href="">
+                                        <img class="d-block w-100" src="{{ Storage::url($product->image) }}" alt="Fourth slide">
                                     </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="img/product-img/product-4.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-4.jpg" alt="Fourth slide">
-                                    </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-12 col-md-6">
+                    
                     <div class="single_product_desc">
 
-                        <h4 class="title"><a href="#">Long Yellow Dress</a></h4>
+                        <h4 class="title"><a href="#">{{$product->name}}</a></h4>
 
-                        <h4 class="price">$ 39.99</h4>
+                        <h4 class="price">$ {{$product->sale_price}}</h4>
 
                         <p class="available">Available: <span class="text-muted">In Stock</span></p>
 
@@ -103,7 +104,7 @@
                         </div>
 
                         <!-- Add to Cart Form -->
-                        <form class="cart clearfix mb-50 d-flex" method="post">
+                        <form class="cart clearfix mb-50 d-flex">
                             <div class="quantity">
                                 <span class="qty-minus"
                                     onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
@@ -114,8 +115,15 @@
                                     onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
                                         class="fa fa-plus" aria-hidden="true"></i></span>
                             </div>
-                            <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add
-                                to cart</button>
+                            <form action="{{ route('cart.store') }}" method="post">
+
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add
+                                    to cart</button>
+                            </form>
+                            
                         </form>
 
                         <div id="accordion" role="tablist">
@@ -130,11 +138,8 @@
                                 <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so
-                                            dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te
-                                            mpus. Ut consectetur lacus.</p>
-                                        <p>Approx length 66cm/26" (Based on a UK size 8 sample) Mixed fibres</p>
-                                        <p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
+                                        <p>{{ $product->description }}</p>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -148,12 +153,7 @@
                                 <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in
-                                            veritatis officia inventore, tempore provident dignissimos nemo, nulla quaerat.
-                                            Quibusdam non, eos, voluptatem reprehenderit hic nam! Laboriosam, sapiente!
-                                            Praesentium.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magnam laborum
-                                            eaque.</p>
+                                        <p>{{ $product->description }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -167,12 +167,7 @@
                                 <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree"
                                     data-parent="#accordion">
                                     <div class="card-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint
-                                            repudiandae suscipit ab soluta delectus voluptate, vero vitae, tempore maxime
-                                            rerum iste dolorem mollitia perferendis distinctio. Quibusdam laboriosam rerum
-                                            distinctio. Repudiandae fugit odit, sequi id!</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae qui maxime
-                                            consequatur laudantium temporibus ad et. A optio inventore deleniti ipsa.</p>
+                                        <p>{{ $product->description }}</p>
                                     </div>
                                 </div>
                             </div>

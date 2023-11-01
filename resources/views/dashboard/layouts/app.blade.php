@@ -135,9 +135,17 @@
                 
                 <li>
                   <a href="{{route('products.index')}}">
-                    <div class="parent-icon"><span class="material-symbols-outlined">P</span>
+                    <div class="parent-icon"><span class="material-symbols-outlined"><i class="fa fa-product-hunt w-4" aria-hidden="true"></i></span>
                     </div>
                     <div class="menu-title">Products</div>
+                  </a>
+                </li>
+                
+                <li>
+                  <a href="{{route('orders.index')}}">
+                    <div class="parent-icon"><span class="material-symbols-outlined"><i class="fa fa-first-order" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="menu-title">Orders</div>
                   </a>
                 </li>
 

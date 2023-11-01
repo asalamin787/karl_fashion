@@ -21,13 +21,13 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="first_name">First Name <span>*</span></label>
                                         <input type="text" class="form-control" id="first_name" name="name"
-                                            value="" required>
+                                            value="{{Auth::user()->name}}" required>
                                     </div>
 
                                     <div class="col-md-6 mb-3">
                                         <label for="last_name">Last Name <span>*</span></label>
                                         <input type="text" class="form-control" id="last_name" name="last_name"
-                                            value="" required>
+                                            value="{{Auth::user()->name}}" required>
                                     </div>
 
                                     <div class="col-12 mb-3">
@@ -38,7 +38,7 @@
 
                                     <div class="col-12 mb-4">
                                         <label for="email_address">Email Address <span>*</span></label>
-                                        <input type="email" class="form-control" id="email_address" value=""
+                                        <input type="email" class="form-control" id="email_address" value="{{Auth::user()->email}}"
                                             name="email">
                                     </div>
 

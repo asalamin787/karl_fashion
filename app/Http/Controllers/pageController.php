@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Product\Product;
 use Illuminate\Http\Request;
+use Laravel\Prompts\Prompt;
 
 class PageController extends Controller
 {
@@ -25,9 +27,10 @@ class PageController extends Controller
         return view('dashboard.view.checkout');
     }
 
-    public function product_details(){
-        $products=Product::latest()->get();
-        return view('dashboard.view.product_details', compact('products'));
+    public function product_details( Product $product){
+        // dd($product);
+        // $sliders=Product::latest()->get();
+        return view('dashboard.view.product_details', compact('product'));
     }
 
     public function thanks(){
@@ -35,6 +38,7 @@ class PageController extends Controller
     }
 
     public function profile(){
-        return view('dashboard.view.profile');
+        $orders=Order::where('user_id',auth()->id())->get();
+        return view('dashboard.view.profile',compact('orders'));
     }
 }

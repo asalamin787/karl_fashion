@@ -13,7 +13,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders=Order::latest()->paginate(8);
+        return view('dashboard.order.show_orders', compact('orders'));
     }
 
     /**
@@ -43,10 +44,12 @@ class OrderController extends Controller
                 'subtotal' => Cart::getSubTotal(),
                 'total' => Cart::getSubTotal(),
                 'status' => 0,
+                'user_id'=>auth()->id(),
             ]);
-            Cart::clear();
+           
             return redirect("thanks");
         }
+        Cart::clear();
     }
 
     /**

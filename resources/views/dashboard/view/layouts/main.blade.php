@@ -391,13 +391,13 @@
                                                     aria-expanded="false">Pages</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="{{ route('index') }}">Home</a>
-                                                    <a class="dropdown-item" href="{{ route('shop') }}">Shop</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('product_details') }}">Product
-                                                        Details</a>
+                                                    {{-- <a class="dropdown-item" href="{{ route('shop') }}">Shop</a> --}}
+                                                    {{-- <a class="dropdown-item"
+                                                        href="">Product
+                                                        Details</a> --}}
                                                     <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('checkout') }}">Checkout</a>
+                                                    {{-- <a class="dropdown-item"
+                                                        href="{{ route('checkout') }}">Checkout</a> --}}
                                                 </div>
                                             </li>
 
@@ -406,7 +406,7 @@
 
                                             <li class="nav-item"><a class="nav-link"
                                                     href="{{ route('shop') }}"><span class="karl-level">hot</span>
-                                                    Shoes</a></li>
+                                                    Shops</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">Contact</a>
                                             </li>
 

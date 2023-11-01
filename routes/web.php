@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('categories', CategoryController::class);
 Route::resource('products', productController::class);
-Route::resource('order', OrderController::class);
+Route::resource('orders', OrderController::class);
 
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');
 Route::get('/caet', [PageController::class, 'cart'])->name('cart');
 Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
-Route::get('/product_details', [PageController::class,'product_details'])->name('product_details');
+Route::get('product_details/{product}', [PageController::class,'product_details'])->name('product_details');
 Route::get('/thanks', [PageController::class, 'thanks']);
 Route::get('/profile', [PageController::class, 'profile'])->name('profile');
 
