@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -24,14 +25,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'name' => 'required|unique:categories',
+            'name' => 'required',
         ]);
+
         
-        // $slug = Str::slug($request->name); 
+        $slug = Str::slug($request->name);
+        //
+        $category=Category::where('slug',$slug)->first();
+        if($category){
+            $random = Str::random(10);
+            $slug=$slug.$random;
+        }
+        dd($slug); 
 
         Category::create([
             'name' => $request->name,
-            // 'slug' => $slug, 
+            'slug' => $slug, 
         ]);
         return back()->with('message', 'Category Added SuccessFull');
     }

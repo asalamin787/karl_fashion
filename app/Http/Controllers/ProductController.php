@@ -6,6 +6,7 @@ use App\Models\Category\Category;
 use App\Models\Product\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -31,7 +32,15 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+        
+        $slug = Str::slug($request->name);
+        $product = Product::where('slug', $slug)->first();
+        if ($product) {
+            $random = Str::random(10);
+            $slug = $slug.$random;
+        }
+        // dd($slug);
         $request->validate([
             'name' => 'required',
             'price' => 'required',
@@ -50,6 +59,7 @@ class ProductController extends Controller
             'image' =>$request->file('image')->store('public/product'),
             'quantity'=>$request->quantity,
             'description'=>$request->description,
+            'slug'=>$slug,
         ]);
         return back()->with('message', 'Product added successFull !');
     }
