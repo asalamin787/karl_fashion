@@ -1,5 +1,5 @@
 @extends('dashboard.view.layouts.main')
-@section('offer_page')
+{{-- @section('offer_page')
     <div class="single-discount-area">
         <h5>Free Shipping &amp; Returns</h5>
         <h6><a href="#">BUY NOW</a></h6>
@@ -14,7 +14,7 @@
         <h5>20% Discount for students</h5>
         <h6>USE CODE: Colorlib</h6>
     </div>
-@endsection
+@endsection --}}
 @section('main')
     <!-- ****** Welcome Slides Area Start ****** -->
     <section class="welcome_area">
@@ -80,7 +80,7 @@
     <!-- ****** Welcome Slides Area End ****** -->
 
     <!-- ****** Top Catagory Area Start ****** -->
-    <section class="top_catagory_area d-md-flex clearfix">
+    {{-- <section class="top_catagory_area d-md-flex clearfix">
         <!-- Single Catagory -->
         <div class="single_catagory_area d-flex align-items-center bg-img"
             style="background-image: url(view/img/bg-img/bg-2.jpg);">
@@ -99,7 +99,7 @@
                 <a href="#" class="btn karl-btn">SHOP NOW</a>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- ****** Top Catagory Area End ****** -->
 
     <!-- ****** Quick View Modal Area Start ****** -->
@@ -139,7 +139,7 @@
                                         <a href="">View Full Product Details</a>
                                     </div>
                                     <!-- Add to Cart Form -->
-                                    <form class="cart" method="post">
+                                    <form class="cart">
                                         <div class="quantity">
                                             <span class="qty-minus"
                                                 onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
@@ -153,6 +153,13 @@
                                                 onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
                                                     class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
+                                        {{-- <form action="{{ route('cart.store') }}" method="post">
+
+                                            @csrf
+                                            <input type="hidden" name="quantity" value="1">
+                                            <input type="hidden" name="product_id" value="{{ $products->id }}">
+                                            <button type="submit" class="cart-submit">ADD TO CART</a>
+                                        </form> --}}
                                         <button type="submit" name="addtocart" value="5" class="cart-submit">Add
                                             to cart</button>
                                         <!-- Wishlist -->
@@ -224,7 +231,7 @@
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <a href="{{route('product_details',$product)}}">
+                            <a href="{{route('product_details',$product->slug)}}">
                                 <h4 class="product-price">${{ $product->sale_price }}</h4>
                                 <p>{{ $product->description }}</p>
                             </a>
@@ -267,7 +274,7 @@
     <!-- ****** Offer Area End ****** -->
 
     <!-- ****** Popular Brands Area Start ****** -->
-    <section class="karl-testimonials-area section_padding_100">
+    {{-- <section class="karl-testimonials-area section_padding_100">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -337,14 +344,14 @@
             </div>
 
         </div>
-    </section>
+    </section> --}}
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         $(document).ready(function() {
             $(".product-view").click(function() {
-                // console.log($(this).data('id'))
+                console.log($(this).data('id'))
                 // console.log($(this).data('image'))
 
                 $('#product_id').val($(this).data('id'));

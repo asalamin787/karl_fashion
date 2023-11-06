@@ -27,10 +27,11 @@ class PageController extends Controller
         return view('dashboard.view.checkout');
     }
 
-    public function product_details( Product $product){
-        // dd($product);
-        // $sliders=Product::latest()->get();
-        return view('dashboard.view.product_details', compact('product'));
+    public function product_details($slug){
+        // dd($slug);
+        $product=Product::where('slug',$slug)->firstOrFail();
+        $show_product=Product::latest()->get();
+        return view('dashboard.view.product_details', compact('product', 'show_product'));
     }
 
     public function thanks(){

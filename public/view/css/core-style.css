@@ -375,7 +375,7 @@ img {
 ------------------------ */
 
 .top_header_area {
-    height: 150px;
+    height: 95px;
     width: 100%;
     position: relative;
     z-index: 1000;
@@ -524,7 +524,7 @@ img {
 }
 
 .main_header_area {
-    height: 150px;
+    height: 95px;
     padding-top: 30px;
 }
 

@@ -14,7 +14,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Favicon  -->
     <link rel="icon" href="{{ asset('view/img/core-img/favicon.ico') }}">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    {{-- <link rel="stylesheet" href="{{ asset('view/path/to/font-awesome/css/font-awesome.min.css') }}"> --}}
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{ asset('view/css/core-style.css') }}">
     <link rel="stylesheet" href="{{ asset('view/style.css') }}">
@@ -295,23 +295,115 @@
                 <div class="container h-100">
                     <div class="row h-100 align-items-center justify-content-end">
 
-                        <div class="col-12 col-lg-7">
+                        <div class="col-9 d-md-flex justify-content-between mt-4">
+                           
+                            <div class="header-social-area">
+                                <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest"
+                                        aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                            
+                            <div class="main-menu-area">
+                                <nav class="navbar navbar-expand-lg align-items-start">
+
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                        data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
+                                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i
+                                                class="ti-menu"></i></span></button>
+
+                                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                        <ul class="navbar-nav animated" id="nav">
+                                            <li class="nav-item active"><a class="nav-link"
+                                                    href="{{ route('index') }}">Home</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                    role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">Pages</a>
+                                                <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                                    <a class="dropdown-item" href="{{ route('index') }}">Home</a>
+                                                   
+                                                    <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
+                                                   
+                                                </div>
+                                            </li>
+
+                                            {{-- <li class="nav-item"><a class="nav-link" href="#">Dresses</a>
+                                            </li> --}}
+
+                                            <li class="nav-item"><a class="nav-link"
+                                                    href="{{ route('shop') }}"><span class="karl-level">hot</span>
+                                                    Shops</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">Contact</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                @if (auth()->check())
+                                                    
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                    role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">Profile</a>
+                                                @else
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">Login</a>
+                                                @endif
+                                                <div class="dropdown-menu" aria-labelledby="karlDropdown">
+
+                                                    @if (auth()->check())
+                                                        <a class="dropdown-item" href="{{route('profile')}}">View Profile</a>
+
+                                                        <form action="{{ route('logout') }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">
+                                                                Logout</button>
+
+                                                        </form>
+                                                    @else
+                                                        <button type="button" class=" dropdown-item"
+                                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                            Login
+                                                        </button>
+
+
+                                                        <button class="dropdown-item"
+                                                            data-bs-target="#exampleModalToggle"
+                                                            data-bs-toggle="modal">Sine in here
+                                                        </button>
+                                                    @endif
+
+
+
+
+                                                   
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+
+                        <div class="col-3">
                             <div class="top_single_area d-flex align-items-center">
-                                <!-- Logo Area -->
+
                                 <div class="top_logo">
-                                    <a href="#"><img src="img/core-img/logo.png" alt=""></a>
+                                    <a href="#"><img src="" alt=""></a>
                                 </div>
-                                <!-- Cart & Menu Area -->
+
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
-                                    <!-- Cart Area -->
+                                    
                                     <div class="cart">
                                         <a href="#" id="header-cart-btn" target="_blank"><span
                                                 class="cart_quantity">{{ Cart::getTotalQuantity() }}</span>
                                             <i class="ti-bag"></i> Your Bag
                                             ${{ Cart::getSubTotal() }}</a>
-                                        <!-- Cart List Area Start -->
+                                        
                                         <ul class="cart-list">
-                                            {{-- @dd($products) --}}
+                                            
                                             @foreach (Cart::getContent() as $product)
                                                 <li>
                                                     <a href="#" class="image"><img
@@ -358,11 +450,11 @@
             </div>
 
             <!-- Top Header Area End -->
-            <div class="main_header_area">
+            {{-- <div class="main_header_area">
                 <div class="container h-100">
                     <div class="row h-100">
                         <div class="col-12 d-md-flex justify-content-between">
-                            <!-- Header Social Area -->
+                           
                             <div class="header-social-area">
                                 <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest"
                                         aria-hidden="true"></i></a>
@@ -370,7 +462,7 @@
                                 <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                             </div>
-                            <!-- Menu Area -->
+                            
                             <div class="main-menu-area">
                                 <nav class="navbar navbar-expand-lg align-items-start">
 
@@ -391,13 +483,9 @@
                                                     aria-expanded="false">Pages</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                                     <a class="dropdown-item" href="{{ route('index') }}">Home</a>
-                                                    {{-- <a class="dropdown-item" href="{{ route('shop') }}">Shop</a> --}}
-                                                    {{-- <a class="dropdown-item"
-                                                        href="">Product
-                                                        Details</a> --}}
+                                                   
                                                     <a class="dropdown-item" href="{{ route('cart') }}">Cart</a>
-                                                    {{-- <a class="dropdown-item"
-                                                        href="{{ route('checkout') }}">Checkout</a> --}}
+                                                   
                                                 </div>
                                             </li>
 
@@ -448,14 +536,14 @@
 
 
 
-                                                    {{-- <a class="dropdown-item" href="">Logout</a> --}}
+                                                   
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
-                            <!-- Help Line -->
+                            
                             <div class="help-line">
                                 <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657
                                     3556 778</a>
@@ -464,7 +552,7 @@
                     </div>
                 </div>
             </div>
-        </header>
+        </header> --}}
         <!-- ****** Header Area End ****** -->
 
         <!-- ****** Top Discount Area Start ****** -->
@@ -575,7 +663,7 @@
     </script>
 
     {{-- login form start --}}
-    <script src="assets/js/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
     <script>
         $(document).ready(function() {
