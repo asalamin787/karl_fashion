@@ -41,7 +41,7 @@
                         <select class="form-select" id="input39" name="category_id">
                             <option selected>Open this select menu</option>
                             @foreach ($categorys as $category)
-                            <option @if($product->category_id== $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                            <option @if($product->category_id == $category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                         </select>
                     </div>

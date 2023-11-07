@@ -115,17 +115,20 @@
                                     <ul id="menu-content2" class="menu-content collapse out">
                                         <!-- Single Item -->
                                         <li data-toggle="collapse" data-target="#women2">
-                                            <a href="#">Woman wear</a>
-                                            <ul class="sub-menu collapse show" id="women2">
+                                            @foreach ($catagories as $category)
+                                                <a
+                                                    href="{{ route('shop', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                            @endforeach
+                                            {{-- <ul class="sub-menu collapse show" id="women2">
                                                 <li><a href="#">Midi Dresses</a></li>
                                                 <li><a href="#">Maxi Dresses</a></li>
                                                 <li><a href="#">Prom Dresses</a></li>
                                                 <li><a href="#">Little Black Dresses</a></li>
                                                 <li><a href="#">Mini Dresses</a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
                                         <!-- Single Item -->
-                                        <li data-toggle="collapse" data-target="#man2" class="collapsed">
+                                        {{-- <li data-toggle="collapse" data-target="#man2" class="collapsed">
                                             <a href="#">Man Wear</a>
                                             <ul class="sub-menu collapse" id="man2">
                                                 <li><a href="#">Man Dresses</a></li>
@@ -166,13 +169,13 @@
                                                 <li><a href="#">Footwear 2</a></li>
                                                 <li><a href="#">Footwear 3</a></li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="widget price mb-50">
+                        {{-- <div class="widget price mb-50">
                             <h6 class="widget-title mb-30">Filter by Price</h6>
                             <div class="widget-desc">
                                 <div class="slider-range">
@@ -235,11 +238,22 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
                 <div class="col-12 col-md-8 col-lg-9">
+                    <div class="row mb-3" style="justify-content: end;">
+                        <div class="col-6">
+
+                            <div class="subscribtion_form">
+                                <form action="{{ route('shop') }}" method="GET">
+                                    <input type="text" name="search" class="mail" placeholder="Search for your product">
+                                    <button type="submit" class="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="shop_grid_product_area">
                         <div class="row">
                             @foreach ($products as $product)
@@ -257,6 +271,7 @@
                                     <!-- Product Description -->
                                     <div class="product-description">
                                         <a href="{{ route('product_details', $product->slug) }}">
+                                            <h5><strong>{{ $product->name }}</strong></h5>
                                             <h4 class="product-price">${{ $product->sale_price }}</h4>
                                             <p>{{ $product->description }}</p>
                                         </a>
@@ -280,7 +295,7 @@
                     <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
                         <nav aria-label="Page navigation">
                             <ul class="pagination pagination-sm">
-                                {{ $products->onEachSide(5)->links() }}
+                                {{-- {{ $products->onEachSide(5)->links() }} --}}
                             </ul>
                         </nav>
                     </div>

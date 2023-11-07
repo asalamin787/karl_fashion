@@ -36,7 +36,6 @@
             <div class="menu-list">
                 <h6>Categories</h6>
                 <ul id="menu-content" class="menu-content collapse out">
-                    <!-- Single Item -->
                     <li data-toggle="collapse" data-target="#women" class="collapsed active">
                         <a href="#">Woman wear <span class="arrow"></span></a>
                         <ul class="sub-menu collapse" id="women">

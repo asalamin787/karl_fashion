@@ -36,7 +36,7 @@ class CategoryController extends Controller
             $random = Str::random(10);
             $slug=$slug.$random;
         }
-        dd($slug); 
+        // dd($slug); 
 
         Category::create([
             'name' => $request->name,
