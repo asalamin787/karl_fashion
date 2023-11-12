@@ -15,6 +15,7 @@ class PageController extends Controller
         $products = Product::latest()->paginate(6);
         return view('dashboard.view.index', compact('products'));
     }
+    
 
     public function shop()
     {
@@ -65,5 +66,9 @@ class PageController extends Controller
     {
         $orders = Order::where('user_id', auth()->id())->get();
         return view('dashboard.view.profile', compact('orders'));
+    }
+
+    public function invoice(Order $order){
+        return view('dashboard.view.invoice', compact('order'));
     }
 }

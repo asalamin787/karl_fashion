@@ -144,21 +144,17 @@
                                     <thead>
                                         <tr>
                                             <th>Product Name</th>
-                                            <th>Price</th>
                                             <th>Quantity</th>
-                                            <th>Total</th>
+                                            <th>Price</th>
+                                            {{-- <th>Total</th> --}}
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($orders as $order)
                                             <tr>
-                                                <td>{{$order->name}}</td>
-                                                <td class="">
-                                                    <a href="#"><img src="{{ Storage::url($order->product->image) }}"
-                                                            alt="Product"></a>
-                                                    <h6></h6>
-                                                </td>
-                                                <td class="price"><span>${{ $order->subtotal }}</span></td>
+                                                <td>{{ $order->product ? $order->product->name : '' }}</td>
+
                                                 <td class="qty">
                                                     {{-- <div class="quantity">
                                                         <span class="qty-minus"
@@ -171,7 +167,14 @@
                                                                 class="fa fa-plus" aria-hidden="true"></i></span>
                                                     </div> --}}
                                                 </td>
-                                                <td class="total_price"><span>${{ $order->total }}</span></td>
+                                                <td class="price">
+                                                    <span>${{ $order->product ? $order->product->sale_price : '' }}</span>
+                                                </td>
+                                                {{-- <td class="total_price"><span>${{$order->product ? $order->product->sale_price : ''}}</span></td> --}}
+                                                <td>
+                                                    <a href="{{ route('invoice', $order) }}"
+                                                        class="btn btn-sm btn-success">View</a>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -179,7 +182,13 @@
                                 </table>
                             </div>
 
-                            <div class="cart-footer d-flex mt-30">
+                            <div class="row">
+                                <div class="col-11 text-end">
+                                    <strong>Total : <span style="margin-right: 41px;">${{ $order->total }}</span></strong>
+                                </div>
+                            </div>
+
+                            {{-- <div class="cart-footer d-flex mt-30">
                                 <div class="back-to-shop w-50">
                                     <a href="shop-grid-left-sidebar.html">Continue shooping</a>
                                 </div>
@@ -187,7 +196,7 @@
                                     <a href="#">clear cart</a>
                                     <a href="#">Update cart</a>
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

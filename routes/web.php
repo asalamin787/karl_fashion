@@ -23,6 +23,7 @@ Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 Route::get('product_details/{slug}', [PageController::class,'product_details'])->name('product_details');
 Route::get('/thanks', [PageController::class, 'thanks']);
 Route::get('/profile', [PageController::class, 'profile'])->name('profile');
+Route::get('/invoice/{order}', [PageController::class, 'invoice'])->name('invoice');
 
 Route::post('/add-cart',[CartController::class,'add'])->name('cart.store');
 Route::post('/add-update',[CartController::class,'update'])->name('cart.update');

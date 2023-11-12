@@ -47,9 +47,9 @@ class OrderController extends Controller
                 'user_id'=>auth()->id(),
             ]);
            
-            return redirect("thanks");
         }
         Cart::clear();
+        return redirect("thanks");
     }
 
     /**
