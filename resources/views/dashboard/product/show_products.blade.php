@@ -60,13 +60,13 @@
                                     <td>{{ $product->quantity }}</td>
 
                                     <td class="d-flex">
-                                        <a href="" class="btn btn-success me-2">View</a>
+                                        <a href="" class="btn btn-sm btn-success me-2">View</a>
                                         <a href="{{ route('products.edit', $product) }}"
-                                            class="btn btn-primary me-2">Edit</a>
+                                            class="btn btn-sm btn-primary me-2">Edit</a>
                                         <form action="{{ route('products.destroy', $product) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

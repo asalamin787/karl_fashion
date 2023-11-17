@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\productController;
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::resource('categories', CategoryController::class);
 Route::resource('products', productController::class);
 Route::resource('orders', OrderController::class);
+Route::resource('coupons', CouponController::class);
+
+Route::post('/add-coupon', [CouponController::class, 'add_coupon'])->name('coupon');
+Route::get('/delete-coupon', [CouponController::class, 'destroy'])->name('coupon.destroy');
 
 Route::get('/', [PageController::class, 'index'])->name('index');
 Route::get('/shop', [PageController::class, 'shop'])->name('shop');

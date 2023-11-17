@@ -148,6 +148,14 @@
                     <div class="menu-title">Orders</div>
                   </a>
                 </li>
+                
+                <li>
+                  <a href="{{route('coupons.index')}}">
+                    <div class="parent-icon"><span class="material-symbols-outlined"><i class="fa fa-codepen" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="menu-title">Coupons</div>
+                  </a>
+                </li>
 
               </ul>
               <!--end navigation-->

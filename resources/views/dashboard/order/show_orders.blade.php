@@ -42,8 +42,8 @@
                                         <a href="javascript:;">{{ $order->id }}</a>
                                     </td>
                                     <td>{{ $order->name }} {{ $order->last_name }}</td>
-                                    <td><img src="{{ Storage::url($order->product->image) }}" width="40" height="40"
-                                            alt=""></td>
+                                    {{-- <td><img src="{{ Storage::url($order->product->image) }}" width="40" height="40"
+                                            alt=""></td> --}}
                                     <td>{{ $order->email }}</td>
                                     {{-- <td>
                                         <a class="d-flex align-items-center gap-3" href="javascript:;">
