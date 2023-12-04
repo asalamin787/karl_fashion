@@ -1,22 +1,7 @@
 @extends('dashboard.view.layouts.main')
-{{-- @section('offer_page')
-    <div class="single-discount-area">
-        <h5>Free Shipping &amp; Returns</h5>
-        <h6><a href="#">BUY NOW</a></h6>
-    </div>
-    <!-- Single Discount Area -->
-    <div class="single-discount-area">
-        <h5>20% Discount for all dresses</h5>
-        <h6>USE CODE: Colorlib</h6>
-    </div>
-    <!-- Single Discount Area -->
-    <div class="single-discount-area">
-        <h5>20% Discount for students</h5>
-        <h6>USE CODE: Colorlib</h6>
-    </div>
-@endsection --}}
 @section('main')
     <!-- ****** Welcome Slides Area Start ****** -->
+    @include('sweetalert::alert')
     <section class="welcome_area">
         <div class="welcome_slides owl-carousel">
             <!-- Single Slide Start -->
@@ -215,8 +200,17 @@
                 <button class="btn" data-filter=".kids">KIDS</button>
             </div>
         </div>
-
+        {{-- @dd(Session::get('product')) --}}
         <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-md-4 ">
+                    @if (session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="row karl-new-arrivals">
                 @foreach ($products as $product)
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
@@ -231,23 +225,34 @@
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <a href="{{route('product_details',$product->slug)}}">
+                            <a href="{{ route('product_details', $product->slug) }}">
                                 <h4 class="product-price">${{ $product->sale_price }}</h4>
                                 <p>{{ $product->description }}</p>
                             </a>
                             <!-- Add to Cart -->
-                            <form action="{{ route('cart.store') }}" method="post">
+                            <div class="d-flex">
 
-                                @csrf
-                                <input type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button type="submit" class="add-to-cart-btn border-0 bg-light">ADD TO CART</a>
-                            </form>
+                                <form action="{{ route('cart.store') }}" method="post">
+
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <button type="submit" class="cart-submit mt-2"
+                                        style="background-color:  #ff084e; border:none; height: 30px; width: 110px; color:white; font-size: 22px; text-align: center; font-size: small;">ADD
+                                        TO CART</button>
+                                </form>
+
+                                <form action="{{ route('wishlist.add', $product) }}" method="post">
+                                    @csrf
+                                    <button type="submit" class="cart-submit ms-2 mt-2"
+                                        style="background-color:  #ff084e; border:none; height: 30px; width: 30px; color:white; font-size: 18px;"><i
+                                            class="ti-heart"></i></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach
                 <!-- Single gallery Item Start -->
-
             </div>
         </div>
     </section>

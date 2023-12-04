@@ -6,6 +6,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,8 @@ Route::get('/invoice/{order}', [PageController::class, 'invoice'])->name('invoic
 Route::post('/add-cart',[CartController::class,'add'])->name('cart.store');
 Route::post('/add-update',[CartController::class,'update'])->name('cart.update');
 Route::get('/cart-destroy/{id}', [CartController::class,'destroy'])->name('cart.destroy');
+
+Route::post('/wishlist/add/{product}', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
 
 Auth::routes();
 
